@@ -21,7 +21,7 @@ module.exports = {
             if (queue) {
                 if (queue.channel.id !== voiceChannel.id) return message.reply('Você tem que estar no mesmo canal de voz');
                 if (!queue.currentTrack) return message.reply('Não tem música pra ser pulada');
-                if (!message.member.permissions.has('ModerateMembers' && member.count<2)) return message.reply('KKKKKKKKKK o cara acha que tem moral pra isso');
+                if (!message.member.permissions.has('ModerateMembers')) return message.reply('KKKKKKKKKK o cara acha que tem moral pra isso');
                 const skippedTrack = queue.currentTrack;
 
                 queue.node.skip();

@@ -52,10 +52,13 @@ module.exports = {
 					}
 	
 					const { track } = await queue.play(playlist);
-					client.user.setPresence({
-						activities: [{name: `${track}`, type: ActivityType.Listening }],
-						status: 'online',
-					  });
+
+					client.user.setActivity({
+						type: ActivityType.Listening,
+						name: track.title,
+						state: track.title
+					});
+
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
@@ -86,14 +89,11 @@ module.exports = {
 							})
 							.setThumbnail(track?.thumbnail)
 						]
-					});
+					}
+				);
 				}
 
 				const { track } = await queue.play(search.tracks);
-				client.user.setPresence({
-					activities: [{name: `${track}`, type: ActivityType.Listening }],
-					status: 'online',
-				  });
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -132,10 +132,6 @@ module.exports = {
 				}
 
 				const { track } = await queueConstruct.play(playlist);
-				client.user.setPresence({
-					activities: [{name: `${track}`, type: ActivityType.Listening }],
-					status: 'online',
-				  });
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -170,21 +166,17 @@ module.exports = {
 			}
 
 			const { track } = await queueConstruct.play(search.tracks);
-			client.user.setPresence({
-				activities: [{name: `${track}`, type: ActivityType.Listening }],
-				status: 'online',
-			  });
 			return (message instanceof CommandInteraction) ? message.editReply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Red').setTitle(`Adicionada a fila`)
+					.setColor('Purple').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
 					.setThumbnail(track.thumbnail)
 				]
 			}) : message.reply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Red').setTitle(`Adicionada a fila`)
+					.setColor('Purple').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
 					.setThumbnail(track.thumbnail)
 				]
