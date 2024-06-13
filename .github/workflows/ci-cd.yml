@@ -16,9 +16,13 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
+      - name: Debug SSH Connection
+        run: |
+          sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -o StrictHostKeyChecking=no -v ${{ secrets.SSH_USER }}@${{ secrets.DROPLET_IP }} "echo SSH connection successful"
+
       - name: Deploy
         run: |
-          sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.DROPLET_IP }} << 'EOF'
+          sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.DROPLET_IP }} << EOF
             cd GoulartBot/
             git pull origin main
             npm install
