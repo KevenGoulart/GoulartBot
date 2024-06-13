@@ -44,14 +44,6 @@ require('./loader')(client, prefix);
 
 client.on('ready', (c) => {
     console.log(`${c.user.username} ta on`)
-<<<<<<< HEAD
-=======
-
-    client.user.setActivity({
-        name: 'Dando um tapa na pantera CI',
-        type: ActivityType.Custom
-    })
->>>>>>> 35e6971146abcaf3111b1ec9962df49346c789cf
 });
 
 client.on('messageCreate', (message) => {
