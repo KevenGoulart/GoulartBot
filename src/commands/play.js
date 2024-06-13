@@ -53,12 +53,6 @@ module.exports = {
 	
 					const { track } = await queue.play(playlist);
 
-					client.user.setActivity({
-						type: ActivityType.Listening,
-						name: track.title,
-						state: track.title
-					});
-
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
