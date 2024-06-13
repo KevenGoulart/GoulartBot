@@ -173,7 +173,7 @@ module.exports = {
 			return (message instanceof CommandInteraction) ? message.editReply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Red').setTitle(`Adicionada a fila`)
+					.setColor('Purple').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
 					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)
@@ -182,7 +182,7 @@ module.exports = {
 			}) : message.reply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Red').setTitle(`Adicionada a fila`)
+					.setColor('Purple').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
 					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)

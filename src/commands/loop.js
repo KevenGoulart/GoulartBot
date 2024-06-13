@@ -6,7 +6,7 @@ module.exports = {
     	.setName('loop').setDescription('Ativa o modo loop'),
     /**
      * 
-     * @param {import('discord.js').Message} message 
+     * @param {import('discord.js').Message | import('discord.js').CommandInteraction} message
      */
     async execute(message) {
         /** @type {import('discord-player').Player} */

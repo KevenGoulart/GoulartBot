@@ -29,9 +29,9 @@ module.exports = async (client, prefix) => {
     client.once('ready', () => {
         console.log(`Logado como: ${client.user.username}`);
         client.user.setPresence({
-            status: 'dnd',
+            status: 'idle',
             activities: [
-                { name: '"!help" for help.', type: 1 }
+                { name: `${track}`, type: ActivityType.Listening }
             ]
         });
     });
@@ -80,7 +80,7 @@ module.exports = async (client, prefix) => {
     });
 
     client.player.events.on('audioTrackAdd', (queue, track) => {
-    	if (queue.repeatMode === 0) return client.user.setActivity(`${track}`, {type: 'LISTENING'});
+    	if (queue.repeatMode === 0) return client.user.setActivity("musiquinhas", {type: 'LISTENING'});
     });
 
     client.player.events.on('audioTrackAdd', (queue, track) => {
@@ -92,11 +92,9 @@ module.exports = async (client, prefix) => {
             return queue.metadata.channel.send("Não há músicas na lista de reprodução.");
         }
     
-        // Seleciona uma música aleatória para tocar
         const randomIndex = Math.floor(Math.random() * tracks.length);
         const trackToPlay = tracks[randomIndex];
     
-        // Reproduz a música selecionada
         const { track } = await queue.play(trackToPlay);
         if (track) {
             return queue.metadata.channel.send({
@@ -105,7 +103,7 @@ module.exports = async (client, prefix) => {
                     .setColor('Purple')
                     .addFields({
                         name: '🔀 Música tocada automaticamente',
-                        value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila!`
+                        value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila`
                     })
                     .setThumbnail(track.thumbnail)
                 ]
@@ -125,10 +123,10 @@ module.exports = async (client, prefix) => {
                 new EmbedBuilder()
                 .setColor('Purple')
                 .addFields({
-                    name: 'Achei uma alternativa no SoundCloud!',
+                    name: 'Achei uma alternativa no SoundCloud',
                     value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila!`
                 })
-				.setFooter({ text: `Originalmente adicionada por: ${queue.metadata.member.user.username}` })
+				.setFooter({ text: `Adicionada por: ${queue.metadata.member.user.username}` })
 				.setThumbnail(track.thumbnail)
 				.setTimestamp()
             ]
