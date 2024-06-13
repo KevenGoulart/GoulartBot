@@ -15,7 +15,7 @@ jobs:
 
       - name: Deploy
         run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.DROPLET_IP }} << EOF
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.DROPLET_IP }} << EOF
             cd GoulartBot/
             git pull origin main
             npm install
