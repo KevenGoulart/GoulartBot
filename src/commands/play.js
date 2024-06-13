@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, CommandInteraction  } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, CommandInteraction } = require('discord.js');
 
 function trimStringWithDots(inputString, maxLength = 96) {
 	if (inputString.length <= maxLength) {
@@ -46,13 +46,12 @@ module.exports = {
 					const playlist = search.playlist;
 					if (playlist.tracks < 1) return (message instanceof CommandInteraction) ? message.editReply(`Essa playlist ai ta vazia`) :
 						message.reply(`Essa playlist ai ta vazia`)
-	
+
 					for (const track of playlist.tracks) {
 						track.setMetadata(message); 
 					}
-	
-					const { track } = await queue.play(playlist);
 
+					const { track } = await queue.play(playlist);
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
@@ -66,7 +65,9 @@ module.exports = {
 								value: `${playlist?.tracks?.length || 0} músicas`,
 								inline: true
 							})
+							.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 							.setThumbnail(track?.thumbnail)
+							.setTimestamp()
 						]
 					}) : message.reply({
 						embeds: [
@@ -81,26 +82,32 @@ module.exports = {
 								value: `${playlist?.tracks?.length || 0} tracks`,
 								inline: true
 							})
+							.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 							.setThumbnail(track?.thumbnail)
+							.setTimestamp()
 						]
-					}
-				);
+					});
 				}
 
 				const { track } = await queue.play(search.tracks);
+
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Purple').setTitle(`Adicionada a fila`)
+						.setColor('Red').setTitle(`Adicionada a fila`)
 						.setDescription(`${track?.title} \`[${track?.duration}]\``)
+						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track.thumbnail)
+						.setTimestamp()
 					]
 				}) : message.reply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Purple').setTitle(`Adicionada a fila`)
+						.setColor('Red').setTitle(`Adicionada a fila`)
 						.setDescription(`${track?.title} \`[${track?.duration}]\``)
+						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track.thumbnail)
+						.setTimestamp()
 					]
 				});
 			}
@@ -109,8 +116,8 @@ module.exports = {
 				selfDeaf: true,
 				leaveOnEnd: true,
 				metadata: message,
-				leaveOnEmpty: false,
-				leaveOnEmptyCooldown: 45000,
+				leaveOnEmpty: true,
+				leaveOnEmptyCooldown: 50000,
 				skipOnNoStream: true,
 			});
 
@@ -138,7 +145,9 @@ module.exports = {
 							value: `${playlist?.tracks?.length || 0} músicas`,
 							inline: true
 						})
+						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track?.thumbnail)
+						.setTimestamp()
 					]
 				}) : message.reply({
 					embeds: [
@@ -153,7 +162,9 @@ module.exports = {
 							value: `${playlist?.tracks?.length || 0} músicas`,
 							inline: true
 						})
+						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track?.thumbnail)
+						.setTimestamp()
 					]
 				});
 			}
@@ -162,16 +173,20 @@ module.exports = {
 			return (message instanceof CommandInteraction) ? message.editReply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Purple').setTitle(`Adicionada a fila`)
+					.setColor('Red').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
+					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)
+					.setTimestamp()
 				]
 			}) : message.reply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Purple').setTitle(`Adicionada a fila`)
+					.setColor('Red').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
+					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)
+					.setTimestamp()
 				]
 			});
 		}
