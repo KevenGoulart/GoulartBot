@@ -12,7 +12,7 @@ module.exports = {
         /** @type {import('discord-player').Player} */
         const player = message.client['player'];
         const queue = player.nodes.get(message.guild.id);
-        const voiceChannel = message.member?.voice?.channel;
+        const voiceChannel = message.member?.voice?.channel;    
 
         if (!voiceChannel) {
             return message.reply('Você não tá em um canal de voz.');

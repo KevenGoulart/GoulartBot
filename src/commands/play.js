@@ -111,8 +111,7 @@ module.exports = {
 				metadata: message,
 				leaveOnEmpty: true,
 				leaveOnEmptyCooldown: 30000,
-				connectionTimeout: 20000,
-				bufferingTimeout: 60000,
+				skipOnNoStream: true,
 			});
 
 			if (!queueConstruct.connection) await queueConstruct.connect(voiceChannel);
