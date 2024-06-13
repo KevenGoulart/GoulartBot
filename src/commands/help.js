@@ -11,7 +11,7 @@ module.exports = {
                 .setColor(0x4437db).setTitle(`${message.client.user.username} comandos disponíveis`)
                 .setDescription('Uma ajudinha')
                 .addFields([{
-                    name: '[!auto] or /auto', value: 'Ativa o modo de fila automática', inline: false
+                    name: '[!autoplay] or /autoplay', value: 'Ativa o modo de fila automática', inline: false
                 }, {
                     name: '[!help | !commands] or `/help`', value: 'Mostra os comandos disponíveis', inline: false
                 }, {
