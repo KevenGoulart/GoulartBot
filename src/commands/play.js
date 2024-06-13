@@ -55,7 +55,7 @@ module.exports = {
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
-							.setColor('Blurple').setTitle(`Playlist carregada`)
+							.setColor('Purple').setTitle(`Playlist carregada`)
 							.setDescription(`${playlist?.title}`)
 							.addFields({
 								name: 'Duração', value: playlist?.durationFormatted,
@@ -72,7 +72,7 @@ module.exports = {
 					}) : message.reply({
 						embeds: [
 							new EmbedBuilder()
-							.setColor('Blurple').setTitle(`Playlist carregada`)
+							.setColor('Purple').setTitle(`Playlist carregada`)
 							.setDescription(`[${playlist?.title}](${playlist?.url})`)
 							.addFields({
 								name: 'Duração', value: playlist?.durationFormatted,
@@ -116,9 +116,10 @@ module.exports = {
 				selfDeaf: true,
 				leaveOnEnd: true,
 				metadata: message,
-				leaveOnEmpty: true,
-				leaveOnEmptyCooldown: 5000,
-				skipOnNoStream: true,
+				leaveOnEmpty: false,
+				leaveOnEmptyCooldown: 30000,
+				connectionTimeout: 20000,
+				bufferingTimeout: 30000,
 			});
 
 			if (!queueConstruct.connection) await queueConstruct.connect(voiceChannel);
@@ -135,7 +136,7 @@ module.exports = {
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Blurple').setTitle(`Playlist carregada`)
+						.setColor('Purple').setTitle(`Playlist carregada`)
 						.setDescription(`${playlist?.title}`)
 						.addFields({
 							name: 'Duração', value: playlist?.durationFormatted,
@@ -152,7 +153,7 @@ module.exports = {
 				}) : message.reply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Blurple').setTitle(`Playlist carregada`)
+						.setColor('Purple').setTitle(`Playlist carregada`)
 						.setDescription(`[${playlist?.title}](${playlist?.url})`)
 						.addFields({
 							name: 'Duração', value: playlist?.durationFormatted,
