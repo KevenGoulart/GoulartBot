@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, CommandInteraction, Client, GatewayIntentBits, ActivityType  } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, CommandInteraction  } = require('discord.js');
 
 function trimStringWithDots(inputString, maxLength = 96) {
 	if (inputString.length <= maxLength) {
@@ -109,10 +109,10 @@ module.exports = {
 				selfDeaf: true,
 				leaveOnEnd: true,
 				metadata: message,
-				leaveOnEmpty: false,
+				leaveOnEmpty: true,
 				leaveOnEmptyCooldown: 30000,
 				connectionTimeout: 20000,
-				bufferingTimeout: 30000,
+				bufferingTimeout: 60000,
 			});
 
 			if (!queueConstruct.connection) await queueConstruct.connect(voiceChannel);

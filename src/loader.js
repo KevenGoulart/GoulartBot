@@ -79,11 +79,8 @@ module.exports = async (client, prefix) => {
         })
     });
 
-    client.player.events.on('playerStart', (queue, track) => {
-    	if (queue.repeatMode === 0) return client.setPresence({
-            activities: [{ name: `${track?.title}`, status: `${track?.title}`,  type: ActivityType.Listening }],
-            status: 'dnd',
-          });
+    client.player.events.on('audioTrackAdd', (queue, track) => {
+    	if (queue.repeatMode === 0) return client.user.setActivity(`${track}`, {type: 'LISTENING'});
     });
 
     client.player.events.on('audioTrackAdd', (queue, track) => {

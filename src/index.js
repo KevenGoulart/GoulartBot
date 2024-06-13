@@ -46,7 +46,7 @@ client.on('ready', (c) => {
     console.log(`${c.user.username} ta on`)
 
     client.user.setActivity({
-        name: 'Dando um tapa na pantera CI/CD',
+        name: 'Dando um tapa na pantera',
         type: ActivityType.Custom
     })
 });
