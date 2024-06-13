@@ -44,24 +44,11 @@ require('./loader')(client, prefix);
 
 client.on('ready', (c) => {
     console.log(`${c.user.username} ta on`)
-
-    client.user.setActivity({
-        name: 'Dando um tapa na pantera CI',
-        type: ActivityType.Custom
-    })
 });
 
 client.on('messageCreate', (message) => {
     if (message.author.bot) {
         return;
-    }
-
-    if (message.content === 'Xibiu') {
-        message.reply('@kez');
-    }
-
-    if (message.content === 'Job') {
-        message.reply('@lippem');
     }
 });
 
