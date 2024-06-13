@@ -1,5 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, CommandInteraction } = require('discord.js');
-const { Client, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, CommandInteraction } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, CommandInteraction, Client, GatewayIntentBits } = require('discord.js');
 
 function trimStringWithDots(inputString, maxLength = 96) {
 	if (inputString.length <= maxLength) {
