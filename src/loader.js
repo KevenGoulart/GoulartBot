@@ -72,11 +72,9 @@ module.exports = async (client, prefix) => {
     	if (queue.repeatMode === 0) return queue.metadata.channel.send({
         	embeds: [
         		new EmbedBuilder()
-        		.setColor('Blue').setTitle(`Tocando agora`)
+        		.setColor('Pink').setTitle(`Tocando agora`)
         		.setDescription(`${track?.title} \`[${track?.duration}]\``)
-        		.setFooter({ text: `Adicionada por: ${queue.metadata.member.user.username}` })
         		.setThumbnail(track.thumbnail)
-        		.setTimestamp()
         	]
         })
     });

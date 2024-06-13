@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, CommandInteraction, Client, GatewayIntentBits } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, CommandInteraction, Client, GatewayIntentBits, ActivityType  } = require('discord.js');
 
 function trimStringWithDots(inputString, maxLength = 96) {
 	if (inputString.length <= maxLength) {
@@ -52,7 +52,10 @@ module.exports = {
 					}
 	
 					const { track } = await queue.play(playlist);
-					message.client.user.setActivity(track.title, { type: 'LISTENING' });
+					client.user.setPresence({
+						activities: [{name: `${track}`, type: ActivityType.Listening }],
+						status: 'online',
+					  });
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
@@ -87,7 +90,10 @@ module.exports = {
 				}
 
 				const { track } = await queue.play(search.tracks);
-				message.client.user.setActivity(track.title, { type: 'LISTENING' });
+				client.user.setPresence({
+					activities: [{name: `${track}`, type: ActivityType.Listening }],
+					status: 'online',
+				  });
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -126,7 +132,10 @@ module.exports = {
 				}
 
 				const { track } = await queueConstruct.play(playlist);
-				message.client.user.setActivity(track.title, { type: 'LISTENING' });
+				client.user.setPresence({
+					activities: [{name: `${track}`, type: ActivityType.Listening }],
+					status: 'online',
+				  });
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -161,7 +170,10 @@ module.exports = {
 			}
 
 			const { track } = await queueConstruct.play(search.tracks);
-			message.client.user.setActivity(track.title, { type: 'LISTENING' });
+			client.user.setPresence({
+				activities: [{name: `${track}`, type: ActivityType.Listening }],
+				status: 'online',
+			  });
 			return (message instanceof CommandInteraction) ? message.editReply({
 				embeds: [
 					new EmbedBuilder()
