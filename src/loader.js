@@ -99,7 +99,17 @@ module.exports = async (client, prefix) => {
         // Reproduz a música selecionada
         const { track } = await queue.play(trackToPlay);
         if (track) {
-            return queue.metadata.channel.send(`🔀 Música tocada automaticamente \`${track.title}\`.`);
+            return queue.metadata.channel.send({
+                embeds: [
+                    new EmbedBuilder()
+                    .setColor('Purple')
+                    .addFields({
+                        name: '🔀 Música tocada automaticamente',
+                        value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila!`
+                    })
+                    .setThumbnail(track.thumbnail)
+                ]
+            });
         }
     });
 
