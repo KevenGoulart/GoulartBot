@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
     name: ['leave', 'disconnect'],
     data: new SlashCommandBuilder()
-        .setName('leave').setDescription('Me manda embora do canal de voz (vai dar esse vacilo?)'),
+        .setName('leave').setDescription('Me manda embora do canal de voz (que isso pae)'),
     /**
      * 
      * @param {import('discord.js').Message} message 

@@ -24,7 +24,7 @@ module.exports = {
 
         return message.reply({
             embeds: [
-                new EmbedBuilder().setColor('Blue')
+                new EmbedBuilder().setColor('Orange')
                 .setThumbnail(queue.currentTrack.thumbnail)
                 .setTitle(`Fila para ${message.guild.name}`)
                 .addFields({

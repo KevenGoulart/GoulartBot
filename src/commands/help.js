@@ -11,11 +11,11 @@ module.exports = {
                 .setColor(0x4437db).setTitle(`${message.client.user.username} comandos disponíveis`)
                 .setDescription('Uma ajudinha')
                 .addFields([{
-                    name: '[!autoplay] or /autoplay', value: 'Ativa o modo de fila automática', inline: false
+                    name: '[!auto] or /auto', value: 'Ativa o modo de fila automática', inline: false
                 }, {
                     name: '[!help | !commands] or `/help`', value: 'Mostra os comandos disponíveis', inline: false
                 }, {
-                    name: '[!leave | !disconnect] or `/leave`', value: 'Me manda embora do canal de voz (vai dar esse vacilo?)', inline: false
+                    name: '[!leave | !disconnect] or `/leave`', value: 'Me manda embora do canal de voz (que isso pae)', inline: false
                 }, {
                     name: '[!nowplaying | !np] or `/nowplaying`', value: 'Mostra qual música tá tocando', inline: false
                 }, {
@@ -25,7 +25,9 @@ module.exports = {
                 }, {
                     name: '[!skip] or `/skip`', value: 'Pula a música atual', inline: false
                 }, {
-                    name: '[!stop | !clearqueue | !cq] or `/stop`', value: 'Limpa a fila (não me faz sair da call)', inline: false
+                    name: '[!loop] or `/loop`', value: 'Ativa o modo loop', inline: false
+                }, {
+                    name: '[!stop | !clear | !cq] or `/stop`', value: 'Limpa a fila', inline: false
                 }])
                      .setThumbnail(message.client.user.displayAvatarURL())
                      .setTimestamp()

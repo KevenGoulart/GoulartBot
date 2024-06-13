@@ -1,4 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder, CommandInteraction } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder, SlashCommandBuilder, CommandInteraction } = require('discord.js');
 
 function trimStringWithDots(inputString, maxLength = 96) {
 	if (inputString.length <= maxLength) {
@@ -52,6 +53,7 @@ module.exports = {
 					}
 	
 					const { track } = await queue.play(playlist);
+					message.client.user.setActivity(track.title, { type: 'LISTENING' });
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
@@ -65,9 +67,7 @@ module.exports = {
 								value: `${playlist?.tracks?.length || 0} músicas`,
 								inline: true
 							})
-							.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 							.setThumbnail(track?.thumbnail)
-							.setTimestamp()
 						]
 					}) : message.reply({
 						embeds: [
@@ -82,32 +82,26 @@ module.exports = {
 								value: `${playlist?.tracks?.length || 0} tracks`,
 								inline: true
 							})
-							.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 							.setThumbnail(track?.thumbnail)
-							.setTimestamp()
 						]
 					});
 				}
 
 				const { track } = await queue.play(search.tracks);
-
+				message.client.user.setActivity(track.title, { type: 'LISTENING' });
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Red').setTitle(`Adicionada a fila`)
+						.setColor('Purple').setTitle(`Adicionada a fila`)
 						.setDescription(`${track?.title} \`[${track?.duration}]\``)
-						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track.thumbnail)
-						.setTimestamp()
 					]
 				}) : message.reply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Red').setTitle(`Adicionada a fila`)
+						.setColor('Purple').setTitle(`Adicionada a fila`)
 						.setDescription(`${track?.title} \`[${track?.duration}]\``)
-						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track.thumbnail)
-						.setTimestamp()
 					]
 				});
 			}
@@ -133,6 +127,7 @@ module.exports = {
 				}
 
 				const { track } = await queueConstruct.play(playlist);
+				message.client.user.setActivity(track.title, { type: 'LISTENING' });
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -146,9 +141,7 @@ module.exports = {
 							value: `${playlist?.tracks?.length || 0} músicas`,
 							inline: true
 						})
-						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track?.thumbnail)
-						.setTimestamp()
 					]
 				}) : message.reply({
 					embeds: [
@@ -163,31 +156,26 @@ module.exports = {
 							value: `${playlist?.tracks?.length || 0} músicas`,
 							inline: true
 						})
-						.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 						.setThumbnail(track?.thumbnail)
-						.setTimestamp()
 					]
 				});
 			}
 
 			const { track } = await queueConstruct.play(search.tracks);
+			message.client.user.setActivity(track.title, { type: 'LISTENING' });
 			return (message instanceof CommandInteraction) ? message.editReply({
 				embeds: [
 					new EmbedBuilder()
 					.setColor('Red').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
-					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)
-					.setTimestamp()
 				]
 			}) : message.reply({
 				embeds: [
 					new EmbedBuilder()
 					.setColor('Red').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
-					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)
-					.setTimestamp()
 				]
 			});
 		}

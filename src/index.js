@@ -46,7 +46,7 @@ client.on('ready', (c) => {
     console.log(`${c.user.username} ta on`)
 
     client.user.setActivity({
-        name: 'Espirrando o lança',
+        name: 'Dando um tapa na pantera',
         type: ActivityType.Custom
     })
 });
@@ -56,8 +56,12 @@ client.on('messageCreate', (message) => {
         return;
     }
 
-    if (message.content === 'Goul') {
-        message.reply('Olá!');
+    if (message.content === 'Xibiu') {
+        message.reply('@kez');
+    }
+
+    if (message.content === 'Job') {
+        message.reply('@lippem');
     }
 });
 

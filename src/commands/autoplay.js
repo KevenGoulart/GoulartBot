@@ -1,9 +1,9 @@
 const { SlashCommandBuilder, CommandInteraction } = require('discord.js');
 
 module.exports = {
-	name: ['autoplay'],
+	name: ['auto'],
     data: new SlashCommandBuilder()
-    	.setName('autoplay').setDescription('Deixa as músicas por minha conta'),
+    	.setName('auto').setDescription('Deixa as músicas por minha conta'),
     /**
      * 
      * @param {import('discord.js').Message} message 
