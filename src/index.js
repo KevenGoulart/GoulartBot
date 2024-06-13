@@ -55,10 +55,6 @@ client.on('messageCreate', (message) => {
     if (message.author.bot) {
         return;
     }
-
-    if (message.content === 'Mim de') {
-        message.reply('Papai, auuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
-    }
 });
 
 client.login(process.env.TOKEN);

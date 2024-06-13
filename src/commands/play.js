@@ -109,8 +109,8 @@ module.exports = {
 				selfDeaf: true,
 				leaveOnEnd: true,
 				metadata: message,
-				leaveOnEmpty: true,
-				leaveOnEmptyCooldown: 30000,
+				leaveOnEmpty: false,
+				leaveOnEmptyCooldown: 45000,
 				skipOnNoStream: true,
 			});
 
