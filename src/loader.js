@@ -1,4 +1,4 @@
-const { Collection, EmbedBuilder } = require('discord.js');
+const { Collection, EmbedBuilder, ActivityType } = require('discord.js');
 const { Player } = require('discord-player');
 const path = require('path');
 const fs = require('fs');
@@ -72,11 +72,22 @@ module.exports = async (client, prefix) => {
     	if (queue.repeatMode === 0) return queue.metadata.channel.send({
         	embeds: [
         		new EmbedBuilder()
-        		.setColor('Pink').setTitle(`Tocando agora`)
+        		.setColor('Purple').setTitle(`Tocando agora`)
         		.setDescription(`${track?.title} \`[${track?.duration}]\``)
         		.setThumbnail(track.thumbnail)
         	]
         })
+    });
+
+    client.player.events.on('playerStart', (queue, track) => {
+    	if (queue.repeatMode === 0) return client.setPresence({
+            activities: [{ name: `${track?.title}`, status: `${track?.title}`,  type: ActivityType.Listening }],
+            status: 'dnd',
+          });
+    });
+
+    client.player.events.on('audioTrackAdd', (queue, track) => {
+        if (!queue.isPlaying() && queue.tracks > 0 && !queue.isEmpty()) queue.revive();
     });
 
     client.player.events.on('willAutoPlay', async (queue, tracks) => {
@@ -95,10 +106,6 @@ module.exports = async (client, prefix) => {
         }
     });
 
-    client.player.events.on('audioTrackAdd', (queue, track) => {
-        if (!queue.isPlaying() && queue.tracks > 0 && !queue.isEmpty()) queue.revive();
-    });
-
     client.player.events.on('error', (queue, error) => {
         console.error(error);
     });
@@ -109,7 +116,7 @@ module.exports = async (client, prefix) => {
         return queue.metadata.channel.send({
             embeds: [
                 new EmbedBuilder()
-                .setColor('Gold')
+                .setColor('Purple')
                 .addFields({
                     name: 'Achei uma alternativa no SoundCloud!',
                     value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila!`
