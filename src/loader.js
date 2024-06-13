@@ -82,8 +82,19 @@ module.exports = async (client, prefix) => {
     });
 
     client.player.events.on('willAutoPlay', async (queue, tracks) => {
-        const { track } = await queue.play(tracks);
-        if (track) return queue.metadata.channel.send(`🔀 Música tocada automaticamente \`${track.title}\`.`);
+        if (!tracks || tracks.length === 0) {
+            return queue.metadata.channel.send("Não há músicas na lista de reprodução.");
+        }
+    
+        // Seleciona uma música aleatória para tocar
+        const randomIndex = Math.floor(Math.random() * tracks.length);
+        const trackToPlay = tracks[randomIndex];
+    
+        // Reproduz a música selecionada
+        const { track } = await queue.play(trackToPlay);
+        if (track) {
+            return queue.metadata.channel.send(`🔀 Música tocada automaticamente \`${track.title}\`.`);
+        }
     });
 
     client.player.events.on('audioTrackAdd', (queue, track) => {
