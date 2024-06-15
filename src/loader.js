@@ -29,7 +29,7 @@ module.exports = async (client, prefix) => {
     client.once('ready', () => {
         console.log(`Logado como: ${client.user.username}`);
         client.user.setPresence({
-            status: 'idle'
+            status: 'online'
         });
     });
 

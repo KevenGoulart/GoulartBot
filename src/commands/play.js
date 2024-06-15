@@ -90,7 +90,6 @@ module.exports = {
 				}
 
 				const { track } = await queue.play(search.tracks);
-
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -117,7 +116,7 @@ module.exports = {
 				leaveOnEnd: true,
 				metadata: message,
 				leaveOnEmpty: true,
-				leaveOnEmptyCooldown: 30000,
+				leaveOnEmptyCooldown: 9000,
 				skipOnNoStream: true,
 			});
 
