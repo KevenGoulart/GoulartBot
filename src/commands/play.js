@@ -117,7 +117,7 @@ module.exports = {
 				leaveOnEnd: true,
 				metadata: message,
 				leaveOnEmpty: true,
-				leaveOnEmptyCooldown: 50000,
+				leaveOnEmptyCooldown: 30000,
 				skipOnNoStream: true,
 			});
 

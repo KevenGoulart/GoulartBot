@@ -1,4 +1,4 @@
-const { Collection, EmbedBuilder, ActivityType } = require('discord.js');
+const { Collection, EmbedBuilder } = require('discord.js');
 const { Player } = require('discord-player');
 const path = require('path');
 const fs = require('fs');
@@ -29,10 +29,7 @@ module.exports = async (client, prefix) => {
     client.once('ready', () => {
         console.log(`Logado como: ${client.user.username}`);
         client.user.setPresence({
-            status: 'idle',
-            activities: [
-                { name: `${track}`, type: ActivityType.Listening }
-            ]
+            status: 'idle'
         });
     });
 
