@@ -46,7 +46,7 @@ client.on('ready', (c) => {
     console.log(`${c.user.username} ta on`)
 
     client.user.setActivity({
-        name: 'Cleiton Rasta meu mestre',
+        name: 'Let him cook',
         type: ActivityType.Custom
     })
 });
