@@ -80,10 +80,6 @@ module.exports = async (client, prefix) => {
     });
 
     client.player.events.on('audioTrackAdd', (queue, track) => {
-    	if (queue.repeatMode === 0) return client.user.setActivity("musiquinhas", {type: 'LISTENING'});
-    });
-
-    client.player.events.on('audioTrackAdd', (queue, track) => {
         if (!queue.isPlaying() && queue.tracks > 0 && !queue.isEmpty()) queue.revive();
     });
 
