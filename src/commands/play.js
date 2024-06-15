@@ -46,16 +46,16 @@ module.exports = {
 					const playlist = search.playlist;
 					if (playlist.tracks < 1) return (message instanceof CommandInteraction) ? message.editReply(`Essa playlist ai ta vazia`) :
 						message.reply(`Essa playlist ai ta vazia`)
-
+	
 					for (const track of playlist.tracks) {
 						track.setMetadata(message); 
 					}
-
+	
 					const { track } = await queue.play(playlist);
 					return (message instanceof CommandInteraction) ? message.editReply({
 						embeds: [
 							new EmbedBuilder()
-							.setColor('Purple').setTitle(`Playlist carregada`)
+							.setColor('Blurple').setTitle(`Playlist carregada`)
 							.setDescription(`${playlist?.title}`)
 							.addFields({
 								name: 'Duração', value: playlist?.durationFormatted,
@@ -72,7 +72,7 @@ module.exports = {
 					}) : message.reply({
 						embeds: [
 							new EmbedBuilder()
-							.setColor('Purple').setTitle(`Playlist carregada`)
+							.setColor('Blurple').setTitle(`Playlist carregada`)
 							.setDescription(`[${playlist?.title}](${playlist?.url})`)
 							.addFields({
 								name: 'Duração', value: playlist?.durationFormatted,
@@ -90,6 +90,7 @@ module.exports = {
 				}
 
 				const { track } = await queue.play(search.tracks);
+
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
@@ -116,7 +117,7 @@ module.exports = {
 				leaveOnEnd: true,
 				metadata: message,
 				leaveOnEmpty: true,
-				leaveOnEmptyCooldown: 9000,
+				leaveOnEmptyCooldown: 5000,
 				skipOnNoStream: true,
 			});
 
@@ -134,7 +135,7 @@ module.exports = {
 				return (message instanceof CommandInteraction) ? message.editReply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Purple').setTitle(`Playlist carregada`)
+						.setColor('Blurple').setTitle(`Playlist carregada`)
 						.setDescription(`${playlist?.title}`)
 						.addFields({
 							name: 'Duração', value: playlist?.durationFormatted,
@@ -151,7 +152,7 @@ module.exports = {
 				}) : message.reply({
 					embeds: [
 						new EmbedBuilder()
-						.setColor('Purple').setTitle(`Playlist carregada`)
+						.setColor('Blurple').setTitle(`Playlist carregada`)
 						.setDescription(`[${playlist?.title}](${playlist?.url})`)
 						.addFields({
 							name: 'Duração', value: playlist?.durationFormatted,
@@ -172,7 +173,7 @@ module.exports = {
 			return (message instanceof CommandInteraction) ? message.editReply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Purple').setTitle(`Adicionada a fila`)
+					.setColor('Red').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
 					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)
@@ -181,7 +182,7 @@ module.exports = {
 			}) : message.reply({
 				embeds: [
 					new EmbedBuilder()
-					.setColor('Purple').setTitle(`Adicionada a fila`)
+					.setColor('Red').setTitle(`Adicionada a fila`)
 					.setDescription(`${track?.title} \`[${track?.duration}]\``)
 					.setFooter({ text: `Adicionada por: ${message.member.user.username}` })
 					.setThumbnail(track.thumbnail)

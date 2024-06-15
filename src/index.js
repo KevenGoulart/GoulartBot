@@ -46,7 +46,7 @@ client.on('ready', (c) => {
     console.log(`${c.user.username} ta on`)
 
     client.user.setActivity({
-        name: 'Let him cook',
+        name: 'Espirrando o lança',
         type: ActivityType.Custom
     })
 });
@@ -55,6 +55,10 @@ client.on('messageCreate', (message) => {
     if (message.author.bot) {
         return;
     }
+
+    if (message.content === 'Goul') {
+        message.reply('Olá!');
+    }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.token);

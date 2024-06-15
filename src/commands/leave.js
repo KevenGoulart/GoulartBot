@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
     name: ['leave', 'disconnect'],
     data: new SlashCommandBuilder()
-        .setName('leave').setDescription('Me manda embora do canal de voz (que isso pae)'),
+        .setName('leave').setDescription('Me manda embora do canal de voz (vai dar esse vacilo?)'),
     /**
      * 
      * @param {import('discord.js').Message} message 
@@ -12,7 +12,7 @@ module.exports = {
         /** @type {import('discord-player').Player} */
         const player = message.client['player'];
         const queue = player.nodes.get(message.guild.id);
-        const voiceChannel = message.member?.voice?.channel;    
+        const voiceChannel = message.member?.voice?.channel;
 
         if (!voiceChannel) {
             return message.reply('Você não tá em um canal de voz.');

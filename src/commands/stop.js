@@ -1,9 +1,9 @@
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
-    name: ['stop', 'clear', 'cq'],
+    name: ['stop', 'clearqueue', 'cq'],
     data: new SlashCommandBuilder()
-        .setName('stop').setDescription(`Limpa a fila atual.`),
+        .setName('stop').setDescription(`Limpa a fila atual (não faz o bot sair da call).`),
     /**
      * 
      * @param {import('discord.js').Message} message 

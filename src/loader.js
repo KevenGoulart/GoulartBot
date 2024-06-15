@@ -29,7 +29,10 @@ module.exports = async (client, prefix) => {
     client.once('ready', () => {
         console.log(`Logado como: ${client.user.username}`);
         client.user.setPresence({
-            status: 'online'
+            status: 'dnd',
+            activities: [
+                { name: '"!help" for help.', type: 1 }
+            ]
         });
     });
 
@@ -69,39 +72,22 @@ module.exports = async (client, prefix) => {
     	if (queue.repeatMode === 0) return queue.metadata.channel.send({
         	embeds: [
         		new EmbedBuilder()
-        		.setColor('Purple').setTitle(`Tocando agora`)
+        		.setColor('Blue').setTitle(`Tocando agora`)
         		.setDescription(`${track?.title} \`[${track?.duration}]\``)
+        		.setFooter({ text: `Adicionada por: ${queue.metadata.member.user.username}` })
         		.setThumbnail(track.thumbnail)
+        		.setTimestamp()
         	]
         })
     });
 
-    client.player.events.on('audioTrackAdd', (queue, track) => {
-        if (!queue.isPlaying() && queue.tracks > 0 && !queue.isEmpty()) queue.revive();
+    client.player.events.on('willAutoPlay', async (queue, tracks) => {
+        const { track } = await queue.play(tracks);
+        if (track) return queue.metadata.channel.send(`🔀 Música tocada automaticamente \`${track.title}\`.`);
     });
 
-    client.player.events.on('willAutoPlay', async (queue, tracks) => {
-        if (!tracks || tracks.length === 0) {
-            return queue.metadata.channel.send("Não há músicas na lista de reprodução.");
-        }
-    
-        const randomIndex = Math.floor(Math.random() * tracks.length);
-        const trackToPlay = tracks[randomIndex];
-    
-        const { track } = await queue.play(trackToPlay);
-        if (track) {
-            return queue.metadata.channel.send({
-                embeds: [
-                    new EmbedBuilder()
-                    .setColor('Purple')
-                    .addFields({
-                        name: '🔀 Música tocada automaticamente',
-                        value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila`
-                    })
-                    .setThumbnail(track.thumbnail)
-                ]
-            });
-        }
+    client.player.events.on('audioTrackAdd', (queue, track) => {
+        if (!queue.isPlaying() && queue.tracks > 0 && !queue.isEmpty()) queue.revive();
     });
 
     client.player.events.on('error', (queue, error) => {
@@ -114,12 +100,12 @@ module.exports = async (client, prefix) => {
         return queue.metadata.channel.send({
             embeds: [
                 new EmbedBuilder()
-                .setColor('Purple')
+                .setColor('Gold')
                 .addFields({
-                    name: 'Achei uma alternativa no SoundCloud',
+                    name: 'Achei uma alternativa no SoundCloud!',
                     value: `Adicionada ${track?.title} \`[${track?.duration}]\` na fila!`
                 })
-				.setFooter({ text: `Adicionada por: ${queue.metadata.member.user.username}` })
+				.setFooter({ text: `Originalmente adicionada por: ${queue.metadata.member.user.username}` })
 				.setThumbnail(track.thumbnail)
 				.setTimestamp()
             ]
