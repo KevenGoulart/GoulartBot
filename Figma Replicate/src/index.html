@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/5afb65cf8d.js" crossorigin="anonymous"></script>
+    <title>Talking Travel</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                    <img src="imgs/logo.png"
+                         alt="gfg_logo">
+            </div>
+            <div>
+                <a class="fontA" href="#">Home</a>
+                <a class="fontA" href="#">Story</a>
+                <a class="fontA" href="#">Gallery</a>
+                <a class="fontA" href="#">Contact Us</a>
+
+                <i class="fa-solid fa-magnifying-glass icone"></i>
+                <i class="fa-regular fa-user icone"></i>
+            </div>
+        </nav>
+    </header>
+    <div class="areaInicial">
+    <div class="title">
+        <h1 class="h1t"><span class="oneWord">Let's talk</span> about <br> your next trip!</h1>
+
+        <h3 class="h3t">Share your favorite travel destination and we will <br> feature it in our next blog!</h3>
+    </div>
+        
+    <button class="btn1">Share your story</button>
+    <i class="fa-solid fa-play iconePlay"></i>
+    <span class="highText">Watch highlights</span>
+</div>
+
+<div class="second">
+    <img src="imgs/castle.png" alt="castle" class="imgCastle">
+
+    <div class="textSecond">
+        <h2 class="h2t2">FEATURED DESTINATION</h2>
+        <h1 class="h1t2">Our japanese adventure blog</h1>
+        <p class="pt2">Visiting the Japan traditional cities? Want to know where <br> to go during your trip? Our blog might help!</p>
+
+        <i class="fa-solid fa-play iconePlay2"></i>
+        <span class="highText2">Watch now</span>
+    </div>
+</div>
+
+<div class="third">
+    <h2 class="h2t3">JOIN OUR ADVENTURES</h2>
+    <h1 class="h1t3">Discover the world with us</h1>
+
+    <div>
+        <div class="column adjust">
+            <img class="cityimg1" src="imgs/kyoto.jpg" alt="kyoto">
+            <h1 class="cityh1">Kyoto</h1>
+            <h2 class="cityh2"><a href="#" class="cityA">Discover</a> </h2>
+        </div>
+        
+        <div class="column">
+            <img class="cityimg1" src="imgs/osaka.jpg" alt="osaka">
+            <h1 class="cityh1">Osaka</h1>
+            <h2 class="cityh2"><a href="#" class="cityA">Discover</a></h2>
+        </div>
+
+        <div class="column">
+            <img class="cityimg1" src="imgs/yokohama.jpg" alt="yokohama">
+            <h1 class="cityh1">Yokohama</h1>
+            <h2 class="cityh2"><a href="#" class="cityA">Discover</a></h2>
+        </div>
+
+        <div class="column">
+            <img class="cityimg1" src="imgs/nagoya.jpg" alt="nagoya">
+            <h1 class="cityh1">Nagoya</h1>
+            <h2 class="cityh2"><a href="#" class="cityA">Discover</a></h2>
+        </div>
+    </div>
+
+    <div class="areaForm">
+        <h2 class="h2form">LET'S BUILD A COMMUNITY</h2>
+        <h1 class="h1form">Join our next destination</h1>
+
+        <div class="divForm">
+            <h2 class="h2inForm">Share your travels</h2>
+            <h3 class="h3inForm">Suggest a new travel destination that you want to see <br> and we will feature it in our blog</h3>
+            <form id="form1" method="post">
+                <input class="input" type="text" id="dest" name="Destination name" placeholder="Destination name">
+                
+                <select class="input" style="color: rgb(109, 109, 109); padding-left: 20px;" name="Destination City" id="city">
+                    <option value="" disabled selected hidden>City of destination</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="osaka">Osaka</option>
+                    <option value="yokohama">Yokohama</option>
+                    <option value="nagoya">Nagoya</option>
+                    <option value="hiroshima">Hiroshima</option>
+                    <option value="kyoto">Kyoto</option>
+                    <option value="miyajima">Miyajima</option>
+                  </select>
+                
+                <input class="input" type="text" id="user" name="Name" placeholder="Your name">
+
+                <select class="input" style="color: rgb(109, 109, 109); padding-left: 20px;" name="Shooting Category" id="shot">
+                    <option value="" disabled selected hidden>Shooting category</option>
+                    <option value="nature">Nature</option>
+                    <option value="people">People</option>
+                    <option value="city">City</option>
+
+                  </select>
+                
+                <input class="input bigInput" type="text" id="desc" name="Description" placeholder="Describe what kind of photos you want to focus on">
+                
+                <button class="btnSub" type="button" onclick="Enviar();">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
+    <div class="catchUpAll">
+        <h2 class="catchUpH2">CATCH UP TO OUR POSTS</h2>
+        <h1 class="catchUpH1">Recent story entries</h1>
+    
+    <div class="catchUpArea">
+        <div class="catchUpBigDiv">
+            <img class="imgBig" src="imgs/imperial.jpg" alt="imperial">
+            
+            <div class="subtitle">
+            <div class="textBig">
+                <h2 class="h2Imp">Imperial Tokyo</h2>
+                <p class="catchUpP">Unveiling a city where ancient whispers echo in serene temples, and <br> a dazzling present unfolds beneath a neon sky.</p>
+            </div>
+            <div class="iconCatchUp">
+                <i class="fa-solid fa-play btnBig"></i>
+            </div>
+            </div>
+        </div>
+    
+        <div>
+            <div class="catchUpLittleDiv">
+                <img class="imgLittle" src="imgs/hiroshima.jpg" alt="hiroshima">
+                <div class="textLittle">
+                    <h2 class="h2Little">Hiroshima Peace Memorial Park</h2>
+                    <p class="catchUpP">Visit the Atomic Bomb Dome and the Children's Peace Monument. Experience a place where history and hope unite.</p>
+                    <br>
+                    <a href="#" class="catchUpA">View full Blog...</a>
+                </div>
+            </div>
+            
+            <div class="catchUpLittleDiv">
+                <img class="imgLittle" src="imgs/historic.jpg" alt="historic">
+                <div class="textLittle">
+                    <h2 class="h2Little">Historic Kyoto</h2>
+                    <p class="catchUpP">Where tradition meets beauty. Discover ancient temples, serene gardens, and rich cultural heritage. Experience the timeless elegance of Kyoto.</p>
+                    <br>
+                    <a href="#" class="catchUpA">View full Blog...</a>
+                </div>
+            </div>
+            
+            <div class="catchUpLittleDiv">
+                <img class="imgLittle" src="imgs/miyajima.jpg" alt="miyajima">
+                <div class="textLittle">
+                    <h2 class="h2Little">The Island Shrine of Itsukushima, Miyajima</h2>
+                    <p class="catchUpP">Renowned for its floating torii gate. Explore ancient shrines and soak in the island’s serene beauty.</p>
+                    <br>
+                    <a href="#" class="catchUpA">View full Blog...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a class="bottomDetails">© 2024, Talking Travel. Keven Goulart.</a>
+    
+    <div class="bottomRedirects">
+        <a href="#" class="item">Home</a>
+        <a href="#" class="item">Blog</a>
+        <a href="#" class="item">Gallery</a>
+        <a href="#" class="item">Contact Us</a>
+    </div>
+</div>
+</body>
+</html>
